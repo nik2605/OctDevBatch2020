@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@model MVCTest.Models.UserProfile
+
+
+
+<br />
+
+@Html.Editor("City", new { @class = "form-control" })
+
+<br />
+
+
+
+
+
+
+
+
+
+@Html.Partial("../Partial/UserProfile", Model, new ViewDataDictionary { { "City", "Hamilton" }, { "Address", "2 Scarletwood st" } })
+
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#City").autocomplete({
+
+                source: function (request, response) {
+
+                    $.ajax({
+
+                        url: "/Home/CityFinder",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+
+                            response($.map(data,
+                                function (item) {
+                                    return { label: item, value: item };
+                                }));
+                        }
+
+                    });
+
+                },
+                messages: {
+                    noResults: "",
+                    results: ""
+                }
+            });
+        });
+
+    </script>
+
+}
