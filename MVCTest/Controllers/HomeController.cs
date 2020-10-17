@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCTest.Data;
 using MVCTest.Models;
+
 
 namespace MVCTest.Controllers
 {
     [Route("api")]
-    public class HomeController : Controller
+    public class HomeController : Controller 
     {
+        
+
         public ActionResult Index()
         {
-           
+
+            User user = new User(5);
+
+            var status = Common.UserStatus.Active;
+
+
             UserProfile profile = new UserProfile();
 
             profile.UserId = 1;
@@ -75,6 +84,8 @@ namespace MVCTest.Controllers
 
 
     }
+
+    
 
     public class City
     {

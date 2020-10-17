@@ -181,6 +181,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCTest.Common\MVCTest.Common.csproj">
+      <Project>{9d6201d9-f159-40e1-9753-9021704451df}</Project>
+      <Name>MVCTest.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCTest.Data\MVCTest.Data.csproj">
+      <Project>{53290CDB-51CE-4E7C-A3C7-3D61201D49D8}</Project>
+      <Name>MVCTest.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
